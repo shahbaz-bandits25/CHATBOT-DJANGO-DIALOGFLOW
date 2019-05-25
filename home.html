@@ -1,0 +1,35 @@
+
+{% load static%}  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Doctor</title>
+    <style> .center{
+            text-align : center;
+            border: 20px solid rgb(128, 128, 128);}</style>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css">
+</head>
+<body>
+    
+    <div class="center container" >
+    
+<!------<p>{{ response }}</p>------>
+<h1>Smart Doctor</h1>
+    {% for chat in data.res %}
+    <p class="d-block p-3 bg-primary text-white">YOU :  {{chat.request}}</p>
+    <p class="d-block p-3 bg-dark text-white">DOCTOR:        {{chat.response}}</p>
+    {% endfor %}
+    <form method="POST">
+            {% csrf_token %}
+            {{data.form}}   
+            <a href="#">  
+             <input class="btn btn-primary" type = "submit" value= "Send"
+             >
+                
+            </a>
+    </form>
+
+</div>
+</body>
+</html>
